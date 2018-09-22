@@ -1,48 +1,45 @@
 {% extends 'extend_temp/extend_temp.html' %}
 {% load static %}
 {% block parent %}
-<body>
-		<header data-am-widget="header" class="am-header am-header-default sq-head ">
-			<div class="am-header-left am-header-nav">
-				<a href="javascript:history.back()" class="">
-					<i class="am-icon-chevron-left"></i>
-				</a>
-			</div>
-			<h1 class="am-header-title">
-  	            <a href="" class="">注册</a>
-            </h1>
-	    </header>
-	    <div style="height: 49px;"></div>
-	    <!--<div class="login-logo">
-	    	<img src="images/logo.png" />
-	    </div>-->
-	    <div style="height: 3rem;"></div>
-        <form action="" method="post">
-            {% csrf_token %}
-            <p style="font-size: 14px;color: red;margin-left:20px" class="text-denger">{{ form.errors.mobile.0 }}</p>
-            <p style="font-size: 14px;color: red;margin-left:20px" class="text-denger">{{ form.errors.mobile.1 }}</p>
-            <input type="text" name="mobile"  placeholder="请输入手机号" class="login-name">
-
-            <p style="font-size: 14px;color: red;margin-left:20px;height: 20px" class="text-denger">{{ form.errors.password.0 }}</p>
-            <input type="password" name="password"  placeholder="请输入密码" class="login-name">
-            <div style="height: 20px"></div>
-            <p style="font-size: 14px;color: red;margin-left:20px;height: 20px" class="text-denger">{{ passwordError }}</p>
-
-            <input type="password" name="re_password"  placeholder="确认密码" class="login-name">
-            <div class="yzm" style="margin-top: 1.5rem;">
-                <input type="text" class="reg-yzm" placeholder="输入验证码" />
-                <input type="button" class="yzm-hq" value="获取验证码" />
-            </div>
-	        <input type="submit" class="login-btn" value="立即注册">
-
-	    <div class="agree">
-            <p style="font-size: 14px;color: red;margin-left:20px" class="text-denger">{{ agreed }}</p>
-	    	<input type="checkbox" name="checkbox" value="同意" checked="">&nbsp;同意
-		    <a href="" class="xy">《用户协议》</a>
-		      <div class="r-login">已有账号，请<a href="{% url 'login:login_in_view' %}" class="l-login">登录</a></div>
-	    </div>
+    <body>
+    <header data-am-widget="header" class="am-header am-header-default sq-head ">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:history.back()" class="">
+                <i class="am-icon-chevron-left"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="" class="">注册</a>
+        </h1>
+    </header>
+    <div style="height: 49px;"></div>
+    <!--<div class="login-logo">
+        <img src="images/logo.png" />
+    </div>-->
+    <div style="height: 3rem;"></div>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.phone }}
+        {{ form.errors.phone.0 }}
+        {{ form.password }}
+        {{ form.errors.password.0 }}
+        {{ form.repassword }}
+        {{ form.errors.repassword.0 }}
+        <div class="yzm" style="margin-top: 1.5rem;">
+            <input type="text" class="reg-yzm" placeholder="输入验证码"/>
+            <input type="button" class="yzm-hq" value="获取验证码"/>
+        </div>
+        <input type="submit" class="login-btn" value="立即注册">
     </form>
-	</body>
+
+
+    <div class="agree">
+        <input type="checkbox" name="checkbox" value="同意" checked="">&nbsp;同意
+        <a href="" class="xy">《用户协议》</a>
+        <div class="r-login">已有账号，请<a href="{% url 'login:login_in_view' %}" class="l-login">登录</a></div>
+    </div>
+
+    </body>
 {% endblock %}
 
 </html>
