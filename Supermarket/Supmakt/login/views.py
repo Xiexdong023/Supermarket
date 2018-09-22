@@ -19,7 +19,7 @@ def login_in_view(request):
 			request.session['userID'] = user.pk  # 获取用户登录账号到session中
 			request.session.set_expiry(0)  # 设置过期时间为退出浏览器过期
 			# print('successfully')
-			url = reverse('login:infor_view')
+			url = reverse('index:index_view')
 			return redirect(url)
 		except Exception:
 			context = {
@@ -27,6 +27,7 @@ def login_in_view(request):
 			}
 			return render(request, "login/login.html", context)
 	else:
+		"""GET请求方式连接地址"""
 		return render(request, "login/login.html")
 
 
@@ -101,5 +102,7 @@ def infor_view(request):
 					return render(request, 'login/infor.html')
 		else:
 			print("获取session的userID为0")
+			"""获取session的userID为0 则跳转到登录界面"""
+			return render(request, 'login/login.html')
 	except Exception:
 		print("获取session出错")

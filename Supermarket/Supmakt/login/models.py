@@ -57,6 +57,7 @@ class InfoModel(models.Model):
 	phonenum = models.CharField(max_length=11, verbose_name='手机号')
 	# 设置一对一的关联关系,设置修改模式为级联
 	infor = models.OneToOneField(to='UserTable', primary_key=True, default=1)
+
 	class Meta:
 		db_table = 'information'
 		verbose_name = "用户基本信息表"
