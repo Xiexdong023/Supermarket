@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -134,19 +134,19 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "my_static")]
 # # 设置静态文件根目录  上线的时候使用
 # STATIC_ROOT = os.path.join(BASE_DIR, "my_static")
 
-# 分配一个资源URL
-MEDIA_URL = "/static/media/"
-# 配置该URL对应的物理目录存储地址
-MEDIA_ROOT = os.path.join(BASE_DIR, 'my_static/media/')
+# # 分配一个资源URL
+# MEDIA_URL = "/static/media/"
+# # 配置该URL对应的物理目录存储地址
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'my_static/media/')
 
 # 这个目录是相对目录，相对与 MEDIA_ROOT
 CKEDITOR_UPLOAD_PATH = "uploads/"
 # 编辑器样式配置
 CKEDITOR_CONFIGS = {
-				    'default': {
-				        'toolbar': 'full',
-				        },
-					}
+	'default': {
+		'toolbar': 'full',
+	},
+}
 # 配置缓存为Redis
 CACHES = {
 	"default": {
@@ -159,3 +159,16 @@ CACHES = {
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+
+# 七牛云密钥等配置
+QINIU_ACCESS_KEY = 'S9TrdZka2Yf59m5-Td4Oo6GU9keUyXdIKTL0lwfZ'
+QINIU_SECRET_KEY = 'HmIorycKuCc_ypBIePM6RkmrnyQdBVRM6ueC5jfk'
+QINIU_BUCKET_NAME = 'supermarke'
+QINIU_BUCKET_DOMAIN = 'pflm45kzy.bkt.clouddn.com/'
+QINIU_SECURE_URL = False  # 使用安全协议使用http
+PREFIX_URL = 'http://'
+
+# 上传文件地址配置
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + "/"
+# 上传文件的存储引擎配置
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'

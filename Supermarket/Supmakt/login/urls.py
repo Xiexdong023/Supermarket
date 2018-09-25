@@ -1,7 +1,5 @@
 from django.conf.urls import url
 from django.views.static import serve
-
-from Supmakt.settings import MEDIA_ROOT
 from login.views import *
 
 urlpatterns = [
@@ -11,5 +9,4 @@ urlpatterns = [
 	url(r'^center/$', CenterView.as_view(), name='center_View'),
 	url(r'^SendCode/$', SendCodeView.as_view(), name='SendCodeView'),
 	url(r'^quit/$', QuitView.as_view(), name='QuitView'),
-	url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
 ]
