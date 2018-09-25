@@ -18,7 +18,9 @@ from django.contrib import admin
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
+	# 上传部件自动调用的上传地址
+	url(r'^ckeditor/', include("ckeditor_uploader.urls")),
 	url(r'^login.html/', include("login.urls", namespace='login')),
-	url(r'^index.html/', include("index.urls", namespace='index')),
-	url(r'^member.html/', include("member.urls", namespace='member')),
+	url(r'^goods/', include("goods.urls", namespace='goods')),
+	url(r'^index/', include("index.urls", namespace='index')),
 ]

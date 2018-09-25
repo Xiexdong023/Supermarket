@@ -36,6 +36,10 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'login.apps.LoginConfig',
+	'index.apps.IndexConfig',
+	'goods.apps.GoodsConfig',
+	'ckeditor',  # 添加ckeditor富文本编辑器
+	'ckeditor_uploader',  # 添加ckeditor富文本编辑器文件上传部件
 ]
 
 MIDDLEWARE = [
@@ -123,13 +127,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 设置静态文件根目录  调试的时候使用
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "my_static")]
+
+# # 设置静态文件根目录  上线的时候使用
+# STATIC_ROOT = os.path.join(BASE_DIR, "my_static")
 
 # 分配一个资源URL
 MEDIA_URL = "/static/media/"
 # 配置该URL对应的物理目录存储地址
 MEDIA_ROOT = os.path.join(BASE_DIR, 'my_static/media/')
 
+# 这个目录是相对目录，相对与 MEDIA_ROOT
+CKEDITOR_UPLOAD_PATH = "uploads/"
+# 编辑器样式配置
+CKEDITOR_CONFIGS = {
+				    'default': {
+				        'toolbar': 'full',
+				        },
+					}
 # 配置缓存为Redis
 CACHES = {
 	"default": {

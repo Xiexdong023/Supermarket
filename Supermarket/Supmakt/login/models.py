@@ -29,7 +29,7 @@ class UserTable(BaseModel):
 	                                  )
 	head = models.ImageField(verbose_name='用户头像',
 	                         upload_to='img',
-	                         default='images/infortx.png',
+	                         default='default/infortx.png',
 	                         )
 	birthday = models.DateField(verbose_name='出生日期',
 	                            null=True,
