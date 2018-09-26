@@ -88,8 +88,8 @@ DATABASES = {
 		# 'OPTIONS': {
 		#     'read_default_file': os.path.join(BASE_DIR, "my.cnf"),
 		# },
-	}
 
+	}
 }
 
 # Password validation
@@ -177,8 +177,10 @@ DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
 # 全文检索框架的配置
 HAYSTACK_CONNECTIONS = {
 	'default': {
-		# 配置搜索引擎
-		'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+		# 配置搜索引擎 whoosh自带的分词对中文不友好
+		# 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+		# 中文分词 使用jieba的whoosh引擎
+		'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
 		# 配置索引文件目录
 		'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
 	},
