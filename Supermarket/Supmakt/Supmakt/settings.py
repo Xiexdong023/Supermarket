@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'haystack',  # 全文检索框架 配置在所有自己应用之前
 	'login.apps.LoginConfig',
 	'index.apps.IndexConfig',
 	'goods.apps.GoodsConfig',
@@ -172,3 +173,15 @@ PREFIX_URL = 'http://'
 MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + "/"
 # 上传文件的存储引擎配置
 DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
+
+# 全文检索框架的配置
+HAYSTACK_CONNECTIONS = {
+	'default': {
+		# 配置搜索引擎
+		'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+		# 配置索引文件目录
+		'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+	},
+}
+# 当添加、修改、删除数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
