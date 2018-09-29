@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 	'login.apps.LoginConfig',
 	'index.apps.IndexConfig',
 	'goods.apps.GoodsConfig',
+	'shopcart.apps.ShopcartConfig',
 	'ckeditor',  # 添加ckeditor富文本编辑器
 	'ckeditor_uploader',  # 添加ckeditor富文本编辑器文件上传部件
 ]
