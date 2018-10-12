@@ -59,8 +59,7 @@ ROOT_URLCONF = 'Supmakt.urls'
 TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [os.path.join(BASE_DIR, 'templates')]
-		,
+		'DIRS': [os.path.join(BASE_DIR, 'templates')],
 		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
@@ -188,3 +187,11 @@ HAYSTACK_CONNECTIONS = {
 }
 # 当添加、修改、删除数据时，自动生成索引
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+"""配置支付宝沙箱支付环境"""
+ALIPAY_APPID = "2016092100559362"
+ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do"
+ALIPAY_DEBUG = True
+# app_private_key_path = os.path.join(BASE_DIR, 'KEYS/app_private_key.pem')
+# alipay_public_key_path = os.path.join(BASE_DIR, 'KEYS/alipay_public_key.pem')
+# KEYS_DIR = [os.path.join(BASE_DIR, "KEYS")]
